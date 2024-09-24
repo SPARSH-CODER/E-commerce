@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        .navbar{
+            background-color: blue;
+            display: flex;
+            flex-wrap: wrap;
+            color: white;
+            width: 100%;
+            height: 70px;
+            align-content: center;
+            
+        }
+        .navbar h3{
+            position: relative;
+            left: 7%;
+            font-size: 35px;
+        }
+
+        .navbar h6:nth-of-type(1){
+            position: relative;
+            left: 9%;
+            top: 13px;
+            font-size: 20px;
+        }
+        .navbar h6 a{
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar h6:nth-of-type(2){
+            position: relative;
+            left: 12%;
+            top: 13px;
+            font-size: 20px;
+
+        }
+
+        .navbar h6:nth-of-type(3){
+            position: relative;
+            left: 15%;
+            top: 13px;
+            font-size: 20px;
+
+        }
+        .navbar h6:nth-of-type(4){
+            position: relative;
+            left: 60vw;
+            top: 13px;
+            font-size: 20px;
+
+        }
+        h6:hover{
+            color: rgb(158, 153, 153);
+        }
+        .innerdiv{
+            height: 420px;
+            width: 310px;
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid black;
+        }
+        
+        .innerdiv{
+            width: 320px;
+            height: 450px;
+            border: 2px solid black;
+            margin: 30px;
+            position: relative;
+            left: 10%;
+        }
+         .innerdiv img{
+            width: 320px;
+            height: 200px;
+
+         }
+         .innerdiv h2{
+            margin: 0px 200px 0 10px;
+         }
+         .innerdiv h3{
+            margin: 0 0 0px 10px;         
+        }
+        a{
+            margin: 0 0 0 10px;
+            color: white;
+            background-color: blue;
+            text-decoration: none;
+            font-size: 20px;
+            height: 25px;
+            padding: 1px 1px ;
+            border-radius:10% ;
+           
+        }
+        boby{
+            position: relative;
+        }
+        .feedback{
+            position: relative;
+            left: 30%;
+            width: 400px;
+            top: 30px;
+        }
+        .out{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        i{
+            font-size: 40px;
+        }
+
+        
+        label{
+            font-size: x-large;
+        }
+        input{
+            font-size: large;
+            height: 100px;
+            width: 500px;
+            margin: 7px 0;
+        }
+        button{
+            margin: 0 0 0 10px;
+            color: white;
+            background-color: blue;
+            text-decoration: none;
+            font-size: 20px;
+            height: 27px;
+            padding: 1px 1px ;
+            border-radius:10% ;
+        }
+        .spe:hover{
+            color: rgb(158, 153, 153);
+        }
+        
+        textarea{
+          margin: 7px 0;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h3>E-Commerce</h3>
+        <h6>Home</h6>
+        <h6>Products</h6>
+        <h6><a class="spe" href="/user/new">New</a></h6>
+        <h6>Login</h6>
+    </nav>
+    <div class="out">
+    
+        <div class="innerdiv">
+            <img src='<%= showdata.image %>' alt="a">
+            <h2> <%= showdata.name %></h2> <br> 
+            <h3> $ <%= showdata.prize %></h3>
+            <h3> <%= showdata.description %></h3>
+            <a href="#" style="background-color: red;">Buy now</a>
+            <a href="#" style="background-color: green;">Add To Cart</a>
+            <a href="/users/<%= showdata.id %>/edit" style="background-color: aqua;">Edit</a>
+            <form action="/users/<%= showdata.id %>?_method=DELETE" method ="POST" >
+                <button>Delete</button>
+            </form>
+            
+        </div>
+    
+    <div class="feedback">
+      <div>
+        <h1>Leave Your Review</h1>
+        <div class="stardiv">
+            <i class="newstar1">&#9733</i>
+            <i class="newstar2">&#9733</i>
+            <i class="newstar3">&#9733</i>
+            <i class="newstar4">&#9733</i>
+            <i class="newstar5">&#9733</i>
+        </div>
+        <br>
+        <form action="">
+            <label for="description" >Description -</label> <br>
+            <textarea name="description" id="des" cols="65" rows="7"></textarea>
+            <button class="button" style="background-color: green;">submit</button>
+        </form>
+      </div>
+      <br>
+      <div class="put" style="width: 500px;">
+
+      </div>
+    </div>
+</div>
+
+<script>
+
+let star1=document.querySelector('.stardiv .newstar1');
+let star2=document.querySelector('.stardiv .newstar2');
+let star3=document.querySelector('.stardiv .newstar3');
+let star4=document.querySelector('.stardiv .newstar4');
+let star5=document.querySelector('.stardiv .newstar5');
+
+let maindiv =document.querySelector('.put');
+let input=document.querySelector('textarea');
+let button=document.querySelector('.button');
+let s1=document.querySelector('.newstar1');
+let s2=document.querySelector('.newstar2');
+let s3=document.querySelector('.newstar3');
+let s4=document.querySelector('.newstar4');
+let s5=document.querySelector('.newstar5');
+
+button.addEventListener('click',(e)=>{
+  let div =document.createElement('div');
+  let div1 =document.createElement('div');
+  let h3 =document.createElement('h3');
+  let img1 =document.createElement('img');
+  let img2=document.createElement('img');
+  let img3 =document.createElement('img');
+  let img4 =document.createElement('img');
+  let img5 =document.createElement('img');
+  let button2 =document.createElement('button');
+
+  let yel='data:image/png;base64,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';
+  let bal='data:image/png;base64,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';
+  e.preventDefault();
+  let comm=input.value;
+  h3.innerText=comm;
+  div1.style.border='1px solid black';
+  div1.style.margin='20px 0';
+  div1.style.padding='10px';
+  h3.style.margin='10px';
+  img1.style.height='35px';
+  img2.style.height='35px';
+  img3.style.height='35px';
+  img4.style.height='35px';
+  img5.style.height='35px';
+  button2.innerText='Delete';
+  button2.style.backgroundColor='red';
+  button2.style.fontSize='20px';
+  button2.style.padding='2px';
+  
+
+  if(s1.style.color=='orange')
+  {
+    img1.src=yel;
+  }
+  else{
+    img1.src=bal;
+  }
+
+  if(s2.style.color=='orange')
+  {
+    img2.src=yel;
+  }
+  else{
+    img2.src=bal;
+  }
+
+  if(s3.style.color=='orange')
+  {
+    img3.src=yel;
+  }
+  else{
+    img3.src=bal;
+  }
+
+  if(s4.style.color=='orange')
+  {
+    img4.src=yel;
+  }
+  else{
+    img4.src=bal;
+  }
+
+  if(s5.style.color=='orange')
+  {
+    img5.src=yel;
+  }
+  else{
+    img5.src=bal;
+  }
+  div.append(img1);
+  div.append(img2);
+  div.append(img3);
+  div.append(img4);
+  div.append(img5);
+
+  div1.append(div);
+  div1.append(h3);
+  div1.append(button2);
+  maindiv.append(div1);
+
+  button2.addEventListener('click',()=>{
+    div1.remove();
+  })
+  input.value='';
+
+})
+
+
+star1.addEventListener('mouseover',()=>{
+    if(star1.style.color=='orange')
+    {
+    star1.style.color='black';
+    star2.style.color='black';
+    star3.style.color='black';
+    star4.style.color='black';
+    star5.style.color='black';
+    }
+    else{
+      star1.style.color='orange';
+    }
+    console.log('ppppppp0');
+});
+
+star2.addEventListener('mouseover',()=>{
+  if(star2.style.color=='orange')
+  {
+    
+    star2.style.color='black';
+    star3.style.color='black';
+    star4.style.color='black';
+    star5.style.color='black';
+  }
+  else{
+    star1.style.color='orange';
+    star2.style.color='orange';
+  }
+    
+});
+star3.addEventListener('mouseover',()=>{
+  if(star3.style.color=='orange')
+  {
+    
+    star3.style.color='black';
+    star4.style.color='black';
+    star5.style.color='black';
+  }
+  else{
+    star1.style.color='orange';
+    star2.style.color='orange';
+    star3.style.color='orange';
+  }
+});
+star4.addEventListener('mouseover',()=>{
+  if(star4.style.color=='orange')
+  {
+    
+    star4.style.color='black';
+    star5.style.color='black';
+  }
+  else{
+    star1.style.color='orange';
+    star2.style.color='orange';
+    star3.style.color='orange';
+    star4.style.color='orange';
+  }
+});
+star5.addEventListener('mouseover',()=>{
+  if(star5.style.color=='orange')
+  {
+    
+    star5.style.color='black';
+  }
+  else{
+    star1.style.color='orange';
+    star2.style.color='orange';
+    star3.style.color='orange';
+    star4.style.color='orange';
+    star5.style.color='orange';
+  }
+});
+
+star1.addEventListener('click',()=>{
+    if(star1.style.color=='orange')
+    {
+    star1.style.color='black';
+    star2.style.color='black';
+    star3.style.color='black';
+    star4.style.color='black';
+    star5.style.color='black';
+    }
+    else{
+      star1.style.color='orange';
+    }
+    console.log('ppppppp0');
+});
+
+star2.addEventListener('click',()=>{
+  if(star2.style.color=='orange')
+  {
+    
+    star2.style.color='black';
+    star3.style.color='black';
+    star4.style.color='black';
+    star5.style.color='black';
+  }
+  else{
+    star1.style.color='orange';
+    star2.style.color='orange';
+  }
+    
+});
+star3.addEventListener('click',()=>{
+  if(star3.style.color=='orange')
+  {
+    
+    star3.style.color='black';
+    star4.style.color='black';
+    star5.style.color='black';
+  }
+  else{
+    star1.style.color='orange';
+    star2.style.color='orange';
+    star3.style.color='orange';
+  }
+});
+star4.addEventListener('click',()=>{
+  if(star4.style.color=='orange')
+  {
+    
+    star4.style.color='black';
+    star5.style.color='black';
+  }
+  else{
+    star1.style.color='orange';
+    star2.style.color='orange';
+    star3.style.color='orange';
+    star4.style.color='orange';
+  }
+});
+star5.addEventListener('click',()=>{
+  if(star5.style.color=='orange')
+  {
+    
+    star5.style.color='black';
+  }
+  else{
+    star1.style.color='orange';
+    star2.style.color='orange';
+    star3.style.color='orange';
+    star4.style.color='orange';
+    star5.style.color='orange';
+  }
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #description{
+            height: 100px;
+        }
+        label{
+            font-size: xx-large;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input{
+            font-size: large;
+            height: 30px;
+            width: 500px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .main{
+            display: flex;
+            justify-content: center;
+        }
+        button{
+            height: 40px;
+            width: 90px;
+            background-color: blue;
+            color: white;
+            font-size:large;
+        }
+        textarea{
+            font-size: large;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="main">
+        
+    <form action="/users" method="post">
+        <label for="name"  >Name -</label> <br><br>
+        <input type="text" name="name" id="name" required placeholder="Product name"> <br><br><br>
+        <label for="image" >Image -</label> <br><br>
+        <input type="text" name="image" id="image" required placeholder="image URL"> <br><br><br>
+        <label for="prize" >Prize -</label> <br><br>
+        <input type="number" name="prize" id="prize" required placeholder="Product prize"> <br><br><br>
+        <label for="description" >Description -</label> <br><br>
+        <textarea name="description" id="description" cols="60" rows="7" required placeholder="Product description" maxlength="110"></textarea>
+        <br><br>
+        <button>submit</button>
+    </form>
+
+</div>
+</body>
+</html>
